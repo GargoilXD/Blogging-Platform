@@ -1,6 +1,14 @@
 package org.blogging.platform.Services;
 
-import org.blogging.platform.Interfaces.Service;
+import org.blogging.platform.DataAccessors.CommentDataAccessor;
 
-public class CommentService implements Service {
+import javax.sql.DataSource;
+
+public class CommentService extends Service {
+    CommentDataAccessor dataAccessor;
+
+    @Override
+    public void Initialize(DataSource dataSource) {
+        this.dataAccessor = new CommentDataAccessor(dataSource);
+    }
 }

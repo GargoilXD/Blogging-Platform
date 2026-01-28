@@ -1,6 +1,14 @@
 package org.blogging.platform.Services;
 
-import org.blogging.platform.Interfaces.Service;
+import org.blogging.platform.DataAccessors.PostDataAccessor;
 
-public class PostService implements Service {
+import javax.sql.DataSource;
+
+public class PostService extends Service {
+    PostDataAccessor dataAccessor;
+
+    @Override
+    public void Initialize(DataSource dataSource) {
+        this.dataAccessor = new PostDataAccessor(dataSource);
+    }
 }

@@ -1,15 +1,31 @@
 package org.blogging.platform.DataTransporters;
 
-import org.blogging.platform.Interfaces.DataTransporter;
+import java.util.HashMap;
 
 public class UserDataTransporter implements DataTransporter {
-    public enum Key { Username, Password, FullName, Email, Gender }
-    public UserDataTransporter set(Key key, Object value) {
-        data.put(key.name(), value);
+    HashMap<String, Object> data = new HashMap<>();
+    public UserDataTransporter setUsername(String Username) {
+        data.put("Username", Username);
         return this;
     }
-    public long getUsername() {
-        return (long) data.get("Username");
+    public UserDataTransporter setPassword(String Password) {
+        data.put("Password", Password);
+        return this;
+    }
+    public UserDataTransporter setFullName(String FullName) {
+        data.put("FullName", FullName);
+        return this;
+    }
+    public UserDataTransporter setEmail(String Email) {
+        data.put("Email", Email);
+        return this;
+    }
+    public UserDataTransporter setGender(String Gender) {
+        data.put("Gender", Gender);
+        return this;
+    }
+    public String getUsername() {
+        return (String) data.get("Username");
     }
     public String getPassword() {
         return (String) data.get("Password");

@@ -1,23 +1,20 @@
 package org.blogging.platform.Services;
 
-import org.blogging.platform.DataAccessors.UserDataAccessor;
+import org.blogging.platform.DataAccessors.Interfaces.UserDataAccessor;
 import org.blogging.platform.DataTransporters.UserDataTransporter;
-import org.blogging.platform.Exceptions.DataAccessException;
+import org.blogging.platform.DataAccessors.Exceptions.DataAccessException;
 import org.blogging.platform.Models.User;
 import org.blogging.platform.Utilities.PasswordHasher;
 
-import javax.sql.DataSource;
 import java.util.Optional;
 
-public class AuthenticationService extends Service {
+public class AuthenticationService {
     UserDataAccessor dataAccessor;
     public User CurrentUser = null;
 
-    @Override
-    public void Initialize(DataSource dataSource) {
-        this.dataAccessor = new UserDataAccessor(dataSource);
+    public AuthenticationService(UserDataAccessor dataAccessor) {
+        this.dataAccessor = dataAccessor;
     }
-
     public boolean login(String username, String password) throws DataAccessException {
         Optional<User> optional = dataAccessor.getByUsername(username);
         if (optional.isEmpty()) return false;
@@ -27,6 +24,7 @@ public class AuthenticationService extends Service {
         return true;
     }
     public void register(UserDataTransporter transporter) throws DataAccessException {
-        dataAccessor.save(transporter);
+        transporter.setPassword(PasswordHasher.hashPassword(transporter.getPassword()));
+        dataAccessor.register(transporter);
     }
 }

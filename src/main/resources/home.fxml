@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.blogging.platform.Controllers.HomeController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="580.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="33.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/icon.png" />
+               </image>
+            </ImageView>
+            <Label maxWidth="1.7976931348623157E308" text="Blogging Platform" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 20;">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/avatar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Text fx:id="ProfileText" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
+            <Button mnemonicParsing="false" onMouseClicked="#OnLogoutPressed" text="Log out" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minViewportHeight="100.0" minViewportWidth="100.0" prefViewportHeight="400.0" prefViewportWidth="400.0">
+              <content>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                     <children>
+                        <Label fx:id="PostsLabel" text="All Posts" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="Consolas Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0">
+                           <children>
+                              <TextField fx:id="SearchField" maxWidth="1.7976931348623157E308" prefHeight="25.0" promptText="Search" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onMouseClicked="#OnSearchPressed" text="Search" />
+                              <ChoiceBox fx:id="SortingChoiceBox" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox spacing="5.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMouseClicked="#OnAllPostsPressed" text="All Posts" />
+                              <Button mnemonicParsing="false" onMouseClicked="#OnMyDraftsPressed" text="My Drafts" />
+                              <Button fx:id="MyPostsButton1" mnemonicParsing="false" onMouseClicked="#OnMyPostsPressed" text="My Posts" />
+                           </children>
+                        </HBox>
+                        <FlowPane fx:id="PostPreviewFlowPane" alignment="CENTER" columnHalignment="CENTER" hgap="5.0" vgap="5.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label fx:id="NoPostsLabel" text="Nothing to see here" />
+                           </children>
+                        </FlowPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="60.0" right="60.0" top="5.0" />
+                     </padding>
+                  </VBox>
+              </content>
+            </ScrollPane>
+            <Button mnemonicParsing="false" onMouseClicked="#OnCreatePostPressed" text="Create Post" StackPane.alignment="BOTTOM_RIGHT">
+               <StackPane.margin>
+                  <Insets bottom="10.0" right="20.0" />
+               </StackPane.margin>
+            </Button>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

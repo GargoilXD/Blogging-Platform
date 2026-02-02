@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="175.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.blogging.platform.Controllers.CommentPaneController">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="475.0" spacing="5.0">
+               <children>
+                  <Button mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/avatar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <VBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="155.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="AuthorLabel" text="Author Name">
+                           <font>
+                              <Font name="Consolas" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="CreatedAtLabel" layoutX="10.0" layoutY="10.0" text="Time of Comment">
+                           <font>
+                              <Font name="Consolas" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Button fx:id="EditButton" mnemonicParsing="false" onMouseClicked="#OnEditPressed" text="Edit" />
+                  <Button fx:id="DeleteButton" layoutX="216.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#OnDeletePressed" text="Delete" />
+               </children>
+            </HBox>
+            <TextArea fx:id="Body" editable="false" minHeight="-Infinity" prefHeight="131.0" prefWidth="400.0" text="Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment Comment  " wrapText="true" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextArea>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

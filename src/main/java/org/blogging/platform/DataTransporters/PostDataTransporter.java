@@ -1,11 +1,27 @@
 package org.blogging.platform.DataTransporters;
 
-import org.blogging.platform.Interfaces.DataTransporter;
+import java.util.HashMap;
 
 public class PostDataTransporter implements DataTransporter {
-    public enum Key { ID, UserID, Title, Body, isDraft }
-    public PostDataTransporter set(Key key, Object value) {
-        data.put(key.name(), value);
+    HashMap<String, Object> data = new HashMap<>();
+    public PostDataTransporter setID(long ID) {
+        data.put("ID", ID);
+        return this;
+    }
+    public PostDataTransporter setUserID(long UserID) {
+        data.put("UserID", UserID);
+        return this;
+    }
+    public PostDataTransporter setTitle(String Title) {
+        data.put("Title", Title);
+        return this;
+    }
+    public PostDataTransporter setBody(String Body) {
+        data.put("Body", Body);
+        return this;
+    }
+    public PostDataTransporter setIsDraft(boolean IsDraft) {
+        data.put("IsDraft", IsDraft);
         return this;
     }
     public long getID() {
@@ -21,6 +37,6 @@ public class PostDataTransporter implements DataTransporter {
         return (String) data.get("Body");
     }
     public boolean getIsDraft() {
-        return (boolean) data.get("isDraft");
+        return ((Boolean) data.get("IsDraft")) == true;
     }
 }
